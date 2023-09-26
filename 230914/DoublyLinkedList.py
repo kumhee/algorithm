@@ -55,7 +55,20 @@ class DoublyLinkedList:
                         prev_node.next = nextNode
                     if nextNode:
                         nextNode.prev = prev_node
-
+                        
+    def reverse(self):
+        current_node = self.head
+        
+        while current_node:
+            temp = current_node.next
+            current_node.next = current_node.prev
+            current_node.prev = temp
+            
+            if not temp:
+                self.head = current_node
+            
+            current_node = temp
+            
 def print_linked_list(linked_list):
     current_node = linked_list.head
     while current_node is not None:
@@ -63,20 +76,6 @@ def print_linked_list(linked_list):
         current_node = current_node.next
  
     print()
-    
-# 이중 연결 리스트를 역순으로 뒤집는 함수 만들어보기
-def reverse(linked_list):
-    prev_node = None
-    curr_node = linked_list.head
-    
-    while curr_node is not None:
-        temp = curr_node.next
-        curr_node.next = prev_node
-        
-        prev_node = curr_node
-        curr_node = temp
-        
-    linked_list.head = prev_node
 
 linked_list = DoublyLinkedList()
 
@@ -84,13 +83,16 @@ linked_list.append(1)
 linked_list.append(2)
 linked_list.append(3)
 
+print("Original Linked List:")
 print_linked_list(linked_list)
 
 linked_list.delete(2)
 
+print("Linked List after deleting 2:")
 print_linked_list(linked_list)
 
-reverse(linked_list)
+linked_list.reverse()
+
+print("Reversed Linked List:")
 print_linked_list(linked_list)
 
- 
