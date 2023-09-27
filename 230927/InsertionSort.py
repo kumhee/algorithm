@@ -7,9 +7,7 @@ def insertion_sort(arr):
         while j >= 0 and key < arr[j]:
             arr[j + 1] = arr[j]
             j -= 1
-
-        # 찾은 위치에 원소 삽입
-        arr[j + 1] = key
+        arr[j + 1] = key # 찾은 위치에 원소 삽입
 
     return arr
 
